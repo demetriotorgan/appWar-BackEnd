@@ -4,6 +4,7 @@ require('dotenv').config();
 const cors = require('cors');
 
 const routesUser = require('./routes/userRoutes');
+const routeMissao = require('./routes/missaoRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -33,6 +34,6 @@ mongoose
 //   console.log("👉 Requisição recebida:", req.method, req.url);
 //   next();
 // });
-app.use('/', routesUser);
+app.use('/', routesUser, routeMissao);
 
 app.listen(PORT, () => console.log(`🚀 Rodando na porta ${PORT}`));
