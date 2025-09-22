@@ -11,3 +11,13 @@ module.exports.adicionarMissao = async(req,res)=>{
         res.status(500).json({msg:'Erro ao cadastrar missão'});
     }
 };
+
+module.exports.carregarMissoes = async(req,res)=>{
+    try {
+        const missoes = await Missao.find().exec();
+        res.json(missoes);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({msg:'Erro carregar missão'});
+    }
+};
