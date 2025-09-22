@@ -9,6 +9,16 @@ const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
 
+app.use(cors({
+    origin:'*',
+}));
+app.use((req,res, next)=>{
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
+    next();    
+  });
+
+
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => console.log('✅ Conectado ao MongoDB!'))
